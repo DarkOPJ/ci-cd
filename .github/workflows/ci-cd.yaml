@@ -1,0 +1,24 @@
+name: New CI/CD
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v6
+      
+      - name: Setup Node js
+        uses: actions/setup-node@v6
+        with: 
+          node-version: 'latest'
+
+      - name: Install Dependencies
+        run: npm i
+
+      - name: Test Application
+        run: npm run test
